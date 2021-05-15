@@ -5,7 +5,7 @@ const path = require('path');
 const inquirer = require('inquirer');
 
 const questions = require('./prompts');
-const createFolder = require('./createProjectFolder');
+const createFolder = require('./createFolder');
 const progressBar = require('./progressBar');
 
 const { MY_PROJECTS_FOLDER_PATH } = process.env;
