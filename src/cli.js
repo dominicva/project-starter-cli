@@ -2,6 +2,7 @@
 
 'use strict';
 
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 
@@ -17,8 +18,7 @@ program.version('0.0.1');
 // console.log('args', );
 const progressBar = require('./progressBar');
 
-const MY_PROJECTS_FOLDER_PATH =
-  '/Users/dominicvanalmsick/Downloads/code/projects/';
+const MY_PROJECTS_DIR_PATH = process.env.MY_PROJECTS_FOLDER_PATH;
 
 const questions = [
   {
@@ -29,10 +29,10 @@ const questions = [
 ];
 
 const createProjectFolder = function (project) {
-  fs.mkdir(path.join(MY_PROJECTS_FOLDER_PATH, project), (err) => {
+  fs.mkdir(path.join(MY_PROJECTS_DIR_PATH, project), (err) => {
     if (err) console.error(err);
     console.log(`Setting up ${chalk.yellow(project)} for you...`);
-    progressBar(20, 100);
+    progressBar(20, 40);
   });
 };
 
