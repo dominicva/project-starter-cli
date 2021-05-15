@@ -1,12 +1,20 @@
 'use strict';
 
+require('dotenv').config();
+const path = require('path');
 const inquirer = require('inquirer');
 
 const questions = require('./prompts');
-const createProjectFolder = require('./createProjectFolder');
+const createFolder = require('./createProjectFolder');
+const progressBar = require('./progressBar');
 
-inquirer.prompt(questions).then((answers) => {
+const { MY_PROJECTS_FOLDER_PATH } = process.env;
+
+inquirer.prompt(questions).then(async (answers) => {
   const { projectName } = answers;
+  const projectRoot = path.join(MY_PROJECTS_FOLDER_PATH, projectName);
 
-  createProjectFolder(projectName);
+  await createFolder(MY_PROJECTS_FOLDER_PATH, projectName);
+  await createFolder(projectRoot, 'src');
+  progressBar(50, 15);
 });
