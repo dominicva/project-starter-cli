@@ -2,15 +2,23 @@
 
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
+
 const chalk = require('chalk');
 const inquirer = require('inquirer');
-// const { program } = require('commander');
-// program.version('0.0.1');
+const { Command } = require('commander');
+const program = new Command();
+program.version('0.0.1');
+
 // const args = require('minimist')(process.argv.slice(2));
 // const [projectName] = args;
 // console.log(chalk.yellow(args['projectName']));
 // console.log('args', );
 const progressBar = require('./progressBar');
+
+const MY_PROJECTS_FOLDER_PATH =
+  '/Users/dominicvanalmsick/Downloads/code/projects/';
 
 const questions = [
   {
@@ -20,7 +28,29 @@ const questions = [
   },
 ];
 
+const createProjectFolder = function (project) {
+  fs.mkdir(path.join(MY_PROJECTS_FOLDER_PATH, project), (err) => {
+    if (err) console.error(err);
+    console.log(`Setting up ${chalk.yellow(project)} for you...`);
+    progressBar(20, 100);
+  });
+};
+
 inquirer.prompt(questions).then((answers) => {
-  console.log(`Setting up ${chalk.yellow(answers['projectName'])} for you...`);
-  progressBar(20, 100);
+  const projectName = answers['projectName'];
+
+  createProjectFolder(projectName);
 });
+
+// fs.appendFile(path.join(__dirname, 'hello.txt'), 'hello world', (err) => {
+//   if (err) console.error(err);
+// });
+
+// fs.writeFile(
+//   path.join(__dirname, 'hello.txt'),
+//   content,
+//   { flag: 'a+' },
+//   (err) => {
+//     if (err) console.error(err);
+//   }
+// );
