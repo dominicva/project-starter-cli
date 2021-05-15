@@ -1,13 +1,28 @@
-## Commander docs
+## Project template CLI tool
 
-## Options
+### Motivation
 
-Options are defined with the `.option()` method, also serving as documentation for the options. Each option can have a short flag (single character) and a long name, separated by a comma or space or vertical bar ('|').
+- Practice node basics
+- Timesaver when setting up new projects
 
-The parsed options can be accessed by calling .opts() on a Command object, and are passed to the action handler. Multi-word options such as "--template-engine" are camel-cased, becoming program.opts().templateEngine etc.
+### Functionality
 
-Multiple short flags may optionally be combined in a single argument following the dash: boolean flags, followed by a single option taking a value (possibly followed by the value). For example -a -b -p 80 may be written as -ab -p80 or even -abp80.
+Right now can only
 
-You can use -- to indicate the end of the options, and any remaining arguments will be used without being interpreted.
+- Take user input for project name
+- Create a new directory in the directory where I keep my code projects
 
-By default options on the command line are not positional, and can be specified before or after other arguments.
+To be added
+
+- Build out folder structure to include things like:
+
+  - src folder with html/css/js files populated with starter content
+  - git init including .gitignore essentials
+  - npm init with linting, bundler, testing, ... dependencies and configs set up
+
+- Provide different template options, eg:
+
+  - Vanilla JS with parcel
+  - Custom React
+  - Front-end plus node server
+  - ...
