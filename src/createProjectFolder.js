@@ -13,7 +13,7 @@ const createProjectFolder = function (project) {
   fs.mkdir(path.join(MY_PROJECTS_FOLDER_PATH, project), (err) => {
     if (err) console.error(err);
     console.log(`Setting up ${chalk.yellow(project)} for you...`);
-    progressBar(20, 40);
+    progressBar(30, 20);
   });
 };
 
