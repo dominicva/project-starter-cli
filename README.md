@@ -18,7 +18,7 @@ To be added
 
   - src folder with html/css/js files populated with starter content
   - git init including .gitignore essentials
-  - npm init with linting, bundler, testing, ... dependencies and configs set up
+  - npm init with linting, bundler, testing, ..., dependencies and configs set up
 
 - Provide different template options, eg:
 
